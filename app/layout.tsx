@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -37,7 +39,9 @@ export default function RootLayout({
       className={`dark ${bebasNeue.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body className="bg-[#0a0a0a] text-[#fafafa] font-body antialiased min-h-screen flex flex-col">
+        <Navbar />
         <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
