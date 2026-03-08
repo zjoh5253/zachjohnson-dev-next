@@ -1,0 +1,30 @@
+---
+title: "Prompt & Ship"
+slug: "prompt-and-ship"
+description: "An AI-powered development consulting platform with automated content pipelines, client proposal templates, and a Next.js marketing site. The operational backbone of my consulting practice."
+image: "/images/projects/portfolio_img_05.jpg"
+url: "https://promptandship.com"
+tags: ["Next.js", "Python", "Claude API", "GitHub Actions", "TypeScript"]
+featured: false
+date: "2025-08-01"
+---
+
+Prompt & Ship is the business infrastructure behind my AI consulting practice. It's two things: a set of Python-based automation agents that handle content and outreach, and a Next.js marketing site that explains the offer.
+
+## The Automation Platform
+
+The `prompt-and-ship/` monorepo contains AI agents for LinkedIn content generation, tool scanning, and metrics reporting. Each agent follows the same pattern: Claude API generates content, validation checks it against config constraints, Slack delivers it for review, and the appropriate API publishes after approval.
+
+GitHub Actions runs everything on schedule — weekly posts, daily tool scans, monthly content calendars. No servers to manage, no dashboards to monitor. The workflows are the product.
+
+## The Marketing Site
+
+Built in Next.js 16 with TypeScript and Tailwind CSS v4. Static export deployed to Render. The site walks through the consulting offer, case studies, and a Calendly embed for booking discovery calls.
+
+Design influenced by Linear and Vercel — dark theme, clean typography, no generic AI startup aesthetics. The goal was a site that felt credible to a technical audience without being cold.
+
+## Business Logic
+
+Templates in `templates/` cover client proposals, email sequences, and social media calendars. Client records in `data/clients/` (excluded from git) track project history and contact details.
+
+The whole system is designed so that the business can run mostly on autopilot — content goes out, inbound comes in, proposals go out, projects start.

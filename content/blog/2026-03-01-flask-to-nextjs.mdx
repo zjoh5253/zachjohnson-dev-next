@@ -1,0 +1,62 @@
+---
+title: "Migrating a Flask Portfolio to Next.js: What I Kept, What I Dropped"
+slug: "2026-03-01-flask-to-nextjs"
+excerpt: "After running a Flask-based portfolio for a few years, I rebuilt it in Next.js 16. Here's what drove the decision and what the migration actually looked like."
+date: "2026-03-01"
+tags: ["Next.js", "Flask", "Python", "TypeScript", "Migration"]
+published: true
+---
+
+My Flask portfolio worked. It had a contact form, a projects section, smooth scroll behavior, and a custom CSS design system I was reasonably happy with. So why rebuild it?
+
+The short answer: adding content was too much friction. The longer answer follows.
+
+## The Flask Version's Actual Problem
+
+Flask is a fine framework. The portfolio used Jinja2 templates, a contact form via Flask-Mail, and vanilla CSS. No database — just static content baked into templates.
+
+The problem was that "static content baked into templates" means content changes require code changes. Adding a project meant editing a Python file, testing locally, and redeploying. It felt heavier than it should for what was essentially a file update.
+
+I wanted to add a blog and make project writeups richer without that overhead. File-based MDX content was the answer — drop a `.mdx` file in the right directory and it appears on the site, frontmatter and all.
+
+## Why Next.js Specifically
+
+A few reasons:
+
+**App Router server components** make filesystem reads at build time trivial. `fs.readFileSync` in a server component, no API route required, no data fetching complexity.
+
+**Static export** means the deployment story stays simple. `next build` produces a `./out` directory. Deploy it anywhere. No Node server to manage at runtime — same operational footprint as the Flask version on Render.
+
+**TypeScript throughout** catches the kind of errors that are annoying to debug in production: wrong field names, missing frontmatter properties, incorrect interface shapes.
+
+**Tailwind CSS v4** — I wanted to try the new CSS-first configuration. It's cleaner than the JS config approach. Less boilerplate for the same utility-first output.
+
+## The Migration Itself
+
+The actual work was straightforward:
+
+1. Rebuilt the layout and components in React, matching the design from the Flask version
+2. Moved project content into `.mdx` files with `gray-matter` frontmatter
+3. Wrote `lib/content.ts` to read and parse those files at build time
+4. Replaced the Flask-Mail contact form with a client-side form that posts to a serverless endpoint
+5. Configured `next.config.ts` for static export with `output: "export"`
+
+The hardest part was getting the fonts right. The Flask version used `@font-face` declarations in CSS. Next.js wants `next/font/google` for optimal loading. The migration is mechanical but requires touching the layout file and removing the old CSS font declarations.
+
+## What I Kept
+
+The design system: dark background, electric blue accent, the same type scale. No reason to redesign just because the stack changed.
+
+The general structure: projects, about, contact. Simple is correct for a portfolio.
+
+## What I Dropped
+
+The Flask-Mail contact form backend. Replaced with a form that submits to a third-party endpoint — less infrastructure to maintain.
+
+Jinja2 template inheritance. React components with TypeScript interfaces are a strict upgrade for maintainability.
+
+## Worth It?
+
+Yes. The friction of adding content is gone. Writing this post is the proof — I created a `content/blog/` directory, dropped in a `.mdx` file, and it shows up on the site. No code changes, no redeployment trigger, just content.
+
+For a portfolio that I actually want to update, that matters.

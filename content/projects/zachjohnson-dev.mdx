@@ -1,0 +1,30 @@
+---
+title: "zachjohnson.dev — Portfolio Rebuild"
+slug: "zachjohnson-dev"
+description: "This portfolio site, rebuilt from Flask to Next.js 16 with TypeScript, Tailwind CSS v4, and MDX-powered content. A ground-up redesign with a focus on performance and maintainability."
+image: "/images/projects/portfolio_img_02.jpg"
+github: "https://github.com/zachjohnson/zachjohnson-dev-next"
+tags: ["Next.js", "TypeScript", "Tailwind CSS", "MDX"]
+featured: true
+date: "2026-03-07"
+---
+
+After running a Flask-based portfolio for a few years, I decided to rebuild from scratch using the modern Next.js stack. The goal was a site that was easier to maintain, faster to load, and capable of supporting MDX-powered project and blog content without a CMS.
+
+## Why the Rebuild
+
+The Flask version worked, but adding new projects meant editing Python templates and redeploying. Content and code were tangled together. Moving to file-based MDX content means I can add a project by dropping a `.mdx` file — no code changes required.
+
+## Technical Decisions
+
+**Next.js 16 with App Router** — The App Router's server components make it straightforward to read the filesystem at build time without any additional data-fetching complexity.
+
+**Tailwind CSS v4** — The new v4 approach with CSS-first configuration is cleaner than the old JS config files. Less boilerplate, same utility-first power.
+
+**gray-matter + next-mdx-remote** — Frontmatter parsing for structured metadata, MDX rendering for rich content in project and blog pages.
+
+**Static export to Render** — No server needed. `next build` produces a static `./out` directory that deploys anywhere.
+
+## Design System
+
+Dark background (#0a0a0a), electric blue accent (#3b82f6), Bricolage Grotesque for headings, IBM Plex Sans for body text. The aesthetic draws from Linear and Vercel — clean, developer-native, no generic "AI startup" gradients.

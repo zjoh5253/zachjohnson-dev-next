@@ -1,0 +1,30 @@
+---
+title: "Portfolio Site (Flask)"
+slug: "portfolio-site-flask"
+description: "The original zachjohnson.dev built with Flask, Jinja2 templates, and vanilla CSS. Deployed on Render with a contact form powered by Flask-Mail."
+image: "/images/projects/portfolio_img_04.jpg"
+url: "https://zachjohnson.dev"
+github: "https://github.com/zachjohnson/zachjohnson-dev"
+tags: ["Python", "Flask", "HTML5", "CSS3", "JavaScript"]
+featured: false
+date: "2023-04-01"
+---
+
+This was my first real personal site — a Flask app with Jinja2 templating, custom CSS, and a working contact form. It served as both a portfolio and a learning project for deploying Python web apps.
+
+## Stack
+
+Flask handled routing and template rendering. Jinja2 made it straightforward to keep the layout consistent across pages without duplicating HTML. The contact form used Flask-Mail with SMTP to forward messages directly to my inbox.
+
+Styling was hand-rolled CSS with some vanilla JavaScript for the navigation and scroll behavior. No frameworks — just the basics.
+
+## What I Learned
+
+- Deploying a Python web app to Render from scratch
+- Managing environment variables and secrets in a hosted environment
+- Setting up Flask-Mail with proper SMTP configuration (harder than it sounds)
+- CSS custom properties for a consistent design system without a utility framework
+
+## Why I Rebuilt It
+
+Flask worked, but content updates required code changes and redeployments. As the site grew, the coupling between templates and content became friction. The Next.js rebuild separates those concerns cleanly.

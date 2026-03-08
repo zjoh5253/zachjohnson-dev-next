@@ -1,0 +1,31 @@
+---
+title: "LinkedIn Ghostwriter Agent"
+slug: "linkedin-ghostwriter"
+description: "An AI-powered content agent that generates, reviews, and publishes LinkedIn posts on a weekly schedule. Built with the Claude API, Slack approval workflow, and GitHub Actions for orchestration."
+image: "/images/projects/portfolio_img_03.jpg"
+github: "https://github.com/zachjohnson/prompt-and-ship"
+tags: ["Python", "Claude API", "Slack", "GitHub Actions"]
+featured: true
+date: "2025-11-01"
+---
+
+The LinkedIn Ghostwriter is a fully autonomous content pipeline. Once configured, it runs every week without any manual input — generating a post, sending it to Slack for review, and publishing after approval.
+
+## How It Works
+
+A GitHub Actions cron job triggers `agents/linkedin-ghostwriter/main.py` every Monday morning. The agent reads the brand voice guide and content pillars from config, calls the Claude API to generate a post, then validates output against word count and tone constraints.
+
+The draft lands in a Slack channel with three buttons: **Approve**, **Edit**, or **Reject**. Approving triggers the LinkedIn API to publish. Rejecting closes the loop. Editing opens a modal where the post can be revised before publishing.
+
+Published posts are archived to `content/published/` in the repository for historical tracking.
+
+## Architecture
+
+- **Claude API** — Haiku for fast drafts, Sonnet for rewrites when tone misses the mark
+- **Slack SDK** — Interactive message blocks with button actions routed through a webhook handler
+- **GitHub Actions** — Scheduling, secret management, and workflow orchestration
+- **Tweepy / LinkedIn API** — Cross-posting support for Twitter/X when enabled
+
+## Results
+
+Consistent weekly publishing without the mental overhead of staring at a blank compose box. The posts stay on-brand because the system prompt encodes voice, not just topics.
