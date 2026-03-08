@@ -8,7 +8,7 @@ import ProjectCard from "@/app/components/ProjectCard";
 import BlogCard from "@/app/components/BlogCard";
 import SkillBadge from "@/app/components/SkillBadge";
 
-const categories = ["frontend", "backend", "tools", "design", "ai"] as const;
+const categories = ["frontend", "backend", "mobile", "data", "tools", "design", "ai"] as const;
 
 export default function HomePage() {
   const featuredProjects = getFeaturedProjects();
@@ -27,11 +27,13 @@ export default function HomePage() {
                 ZACH JOHNSON
               </h1>
               <p className="text-[#a1a1a1] text-xl mt-4 font-body">
-                Developer. Designer. Dad.
+                Product Leader. Builder. Dad.
               </p>
               <p className="text-[#a1a1a1] mt-6 leading-relaxed">
-                I&apos;m an entrepreneur, developer, dreamer, and most recently a Dad.
-                I&apos;m passionate about design and creating great digital experiences.
+                I&apos;m a product leader who codes. I&apos;ve led the creation of 5 major
+                products from scratch that have generated over $10M in revenue. I build
+                with small, skilled teams and AI-powered tools to ship faster than anyone
+                expects.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <Link
@@ -72,18 +74,99 @@ export default function HomePage() {
         <FadeIn>
           <div className="max-w-2xl space-y-5 text-[#a1a1a1] leading-relaxed">
             <p>
-              I&apos;m an entrepreneur, developer, dreamer, and most recently a Dad.
-              Based in Salt Lake City, I build digital products and experiences that
-              make a difference.
+              I&apos;m a product leader who codes. Since joining Impact Suite in December
+              2020, I&apos;ve led the creation of 5 major products from scratch that have
+              generated over $10M in revenue across B2B and consumer markets.
             </p>
             <p>
-              I&apos;m passionate about design. I have a knack for creating user
-              experiences and love to keep up with the ever changing world of software
-              development. From startups to consulting, I bring ideas to life through
-              code.
+              Most recently, I led a strategic pivot to K-12 education. When our
+              compliance partner withdrew, my 2-person dev team and I built the entire
+              Impact Suite for Schools platform in 5 months — a project typically
+              requiring 10 engineers and a year. Using AI-powered development tools, we
+              achieved $300K ARR and a $3M+ pipeline by October 2025, serving 20 school
+              districts.
+            </p>
+            <p>
+              I&apos;m passionate about mental health technology, AI-native product
+              development, and proving that small, skilled teams with the right tools can
+              outpace traditional development timelines.
             </p>
           </div>
         </FadeIn>
+      </section>
+
+      {/* ── EXPERIENCE ───────────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-24">
+        <SectionHeader title="EXPERIENCE" />
+        <div className="space-y-10">
+          {[
+            {
+              company: "Impact Suite",
+              role: "VP of Product",
+              dates: "Mar 2024 – Present",
+              location: "Logan, UT",
+              description:
+                "Led company's strategic pivot into K-12 education. Built entire Impact Suite for Schools platform with 2-person dev team in 5 months. $300K ARR, 20 school districts, $3M+ pipeline.",
+            },
+            {
+              company: "Impact Suite",
+              role: "Software Engineer",
+              dates: "Dec 2020 – Present",
+              location: "Logan, UT",
+              description:
+                "Led or contributed to 5 major 0-to-1 product builds generating $10M+ revenue. Technical architect for products serving 25K+ monthly active users.",
+            },
+            {
+              company: "Nexant",
+              role: "Software Engineer",
+              dates: "Jul 2019 – May 2021",
+              location: "Murray, UT",
+              description:
+                "Built internal tools and APIs using Python, PHP, JavaScript, ASP.NET C#. Integrated VOIP APIs and managed data across PostgreSQL, MySQL, Oracle, and SQL Server.",
+            },
+            {
+              company: "BoomCloud",
+              role: "Lead Software Engineer",
+              dates: "May 2018 – Aug 2019",
+              location: "Draper, UT",
+              description:
+                "Refactored legacy ASP.NET app, migrated to AWS, built React frontends. Managed team serving 300+ dental practices.",
+            },
+            {
+              company: "WorkSumo",
+              role: "Co-Founder & Chief of Product",
+              dates: "Jan 2017 – Jan 2020",
+              location: "Salt Lake City, UT",
+              description:
+                "Led design and development of on-demand employment platform. Managed customer relations and investor engagement.",
+            },
+            {
+              company: "iWT Health",
+              role: "Web Developer & Salesforce CRM",
+              dates: "Jan 2016 – Oct 2017",
+              location: "",
+              description:
+                "Led web development and Salesforce CRM administration. Built responsive sites with HTML5, SCSS, JavaScript.",
+            },
+          ].map((exp, i) => (
+            <FadeIn key={`${exp.company}-${exp.role}`} delay={i * 80}>
+              <div className="border-l-2 border-[#262626] pl-6 relative">
+                <span className="absolute -left-[5px] top-2 w-2 h-2 bg-[#a1a1a1] rounded-full" />
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="font-heading text-lg uppercase text-[#fafafa]">
+                    {exp.company}
+                  </h3>
+                  <span className="text-[#a1a1a1] text-sm">{exp.role}</span>
+                </div>
+                <p className="font-mono text-xs text-[#6b6b6b] mt-1">
+                  {exp.dates}
+                  {exp.location ? ` · ${exp.location}` : ""}
+                </p>
+                <p className="text-[#a1a1a1] text-sm mt-2">{exp.description}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </section>
 
       {/* ── SKILLS ───────────────────────────────────────────────── */}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjects, getProjectBySlug } from "@/lib/content";
 import FadeIn from "@/app/components/FadeIn";
+import MarkdownContent from "@/app/components/MarkdownContent";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -41,11 +42,6 @@ export default async function ProjectDetailPage({ params }: Props) {
     month: "long",
     day: "numeric",
   });
-
-  const paragraphs = project.content
-    .split(/\n\n+/)
-    .map((p) => p.trim())
-    .filter(Boolean);
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-24">
@@ -119,12 +115,8 @@ export default async function ProjectDetailPage({ params }: Props) {
       </FadeIn>
 
       <FadeIn delay={200}>
-        <div className="prose prose-invert max-w-none mt-8">
-          {paragraphs.map((paragraph, index) => (
-            <p key={index} className="text-[#a1a1a1] leading-relaxed mb-4">
-              {paragraph}
-            </p>
-          ))}
+        <div className="max-w-none mt-8">
+          <MarkdownContent content={project.content} />
         </div>
       </FadeIn>
     </div>

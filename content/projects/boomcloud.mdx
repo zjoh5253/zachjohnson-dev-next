@@ -1,0 +1,19 @@
+---
+title: "BoomCloud"
+slug: "boomcloud"
+description: "Modernized a legacy dental practice management platform serving 300+ practices and 14K patients."
+image: "/images/projects/portfolio_img_08.jpg"
+tags: ["React", "Node.js", "AWS", "SQL Server", "ASP.NET"]
+featured: false
+date: "2019-05-01"
+---
+
+BoomCloud is a subscription-based membership plan platform for dental practices, letting practices offer in-house payment plans directly to patients as an alternative to traditional insurance. When I joined, the platform was running on a legacy ASP.NET monolith backed by SQL Server — functional, but increasingly difficult to maintain and extend as the product grew to serve 300+ practices and 14,000+ patients. The core challenge was modernizing without disrupting a production system that practices and patients depended on every day.
+
+## Refactoring and Cloud Migration
+
+The migration strategy centered on incrementally carving functionality out of the monolith and rebuilding it as modular services on AWS. Rather than a risky big-bang rewrite, we moved piece by piece — extracting billing, reporting, and patient management into cleaner service boundaries while keeping the existing system live. The move to AWS brought meaningful improvements in deployment flexibility, environment parity between staging and production, and the ability to scale individual services under load rather than scaling the entire monolith.
+
+## React Frontends and Dev Team Leadership
+
+On the frontend, I led the transition from server-rendered ASP.NET views to React-based UIs, improving both the developer experience and the responsiveness of the application for practice administrators. I also managed the development team during this period — running code reviews, setting technical direction, and keeping the migration on track while continuing to ship new product features in parallel. Balancing active modernization work with a live production system serving real practices required careful coordination and a disciplined approach to rollout.
