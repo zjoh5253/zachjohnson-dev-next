@@ -58,7 +58,7 @@ export default function HomePage() {
                   src="/images/headshot.jpg"
                   alt="Zach Johnson"
                   fill
-                  className="object-cover grayscale contrast-125"
+                  className="object-cover"
                   unoptimized
                   priority
                 />
